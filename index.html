@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 House Price Prediction - AI Powered</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏠 House Price Prediction</h1>
+                <p>AI-Powered Real Estate Price Estimation</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Section: Prediction Form -->
+            <div class="section prediction-section">
+                <h2>📊 Predict House Price</h2>
+                <form id="predictionForm" class="form">
+                    <div class="form-group">
+                        <label for="areaInput">House Area (sq ft)</label>
+                        <input 
+                            type="number" 
+                            id="areaInput" 
+                            placeholder="Enter area (e.g., 3000)" 
+                            min="100" 
+                            max="10000"
+                            step="100"
+                            required
+                        >
+                        <small>Range: 100 - 10,000 sq ft</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">🔍 Predict Price</button>
+                </form>
+
+                <!-- Results Display -->
+                <div id="resultCard" class="result-card hidden">
+                    <div class="result-content">
+                        <div class="result-row">
+                            <span class="label">House Area:</span>
+                            <span class="value" id="resultArea">-</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">Predicted Price:</span>
+                            <span class="value price" id="resultPrice">₹ -</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">Price per Sq Ft:</span>
+                            <span class="value" id="resultPriceSqFt">₹ -</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Display -->
+                <div id="errorCard" class="error-card hidden">
+                    <p id="errorMessage">-</p>
+                </div>
+            </div>
+
+            <!-- Right Section: Statistics & Charts -->
+            <div class="section stats-section">
+                <h2>📈 Model Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Training Accuracy</h3>
+                        <p id="trainScore" class="stat-value">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Testing Accuracy</h3>
+                        <p id="testScore" class="stat-value">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Price Coefficient</h3>
+                        <p id="coefficient" class="stat-value">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Base Price</h3>
+                        <p id="intercept" class="stat-value">₹ -</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Chart Section -->
+        <div class="section chart-section">
+            <h2>📊 Price Trend Analysis</h2>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Section -->
+        <div class="section info-section">
+            <h2>ℹ️ About This Model</h2>
+            <div class="info-content">
+                <p>
+                    This advanced machine learning model uses <strong>Linear Regression</strong> to predict house prices
+                    based on the house area. The model is trained on real estate data and provides accurate predictions
+                    for properties within the analyzed range.
+                </p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>✅ Accurate Predictions</h3>
+                        <p>Based on trained ML model with validated accuracy</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📊 Real-time Analysis</h3>
+                        <p>Get instant price estimations with detailed metrics</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔍 Data Visualization</h3>
+                        <p>Interactive charts showing market trends and patterns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 House Price Prediction AI | Powered by Machine Learning</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
